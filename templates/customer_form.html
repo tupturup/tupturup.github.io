@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="col-xs-offset-2" style="margin-top: 30px;">
+  <div id="customer_table">
+    <!-- ERROR MESSAGE -->
+    {% if error %}
+    <div class="col-xs-8">
+      <div class="alert alert-warning">
+        <span class="closebtn">&times;</span>
+        <strong>Error!</strong> {{ error }}
+      </div>
+    </div>
+    {% endif %}
+
+    <div class="col-xs-offset-2 col-xs-11">
+      <form method="{{ method }}" action="{{ action }}" class="form-horizontal">
+        <!-- FIRST NAME INPUT -->
+        <div class="form-group">
+          <label class="control-label col-sm-1" for="first_name">{{ form.first_name.label }}</label>
+          <div class="col-sm-3">{{ form.first_name(class_="input form-control", placeholder="First name") }}</div>
+          <!-- WARNING MESSAGE -->
+          {% for message in form.first_name.errors %}
+          <div class="controls">
+            <p>
+              <font color="red">{{ message }}</font>
+            </p>
+          </div>
+          {% endfor %}
+        </div>
+        <!-- LAST NAME INPUT -->
+        <div class="form-group">
+          <label class="control-label col-sm-1" for="last_name">{{ form.last_name.label }}</label>
+          <div class="col-sm-3">{{ form.last_name(class_="input form-control", placeholder="Last name") }}</div>
+          <!-- WARNING MESSAGE -->
+          {% for message in form.last_name.errors %}
+          <div class="controls">
+            <p>
+              <font color="red">{{ message }}</font>
+            </p>
+          </div>
+          {% endfor %}
+        </div>
+        <!-- EMAIL INPUT -->
+        <div class="form-group">
+          <label class="control-label col-sm-1" for="email">{{ form.email.label }}</label>
+          <div class="col-sm-3"> {{ form.email(class_="input form-control", placeholder="Email") }}</div>
+          <!-- WARNING MESSAGE -->
+          {% for message in form.email.errors %}
+          <div>
+            <p>
+              <font color="red">{{ message }}</font>
+            </p>
+          </div>
+          {% endfor %}
+        </div>
+        <!-- AGE INPUT -->
+        <div class="form-group">
+          <label class="control-label col-sm-1" for="Age">{{ form.age.label }}</label>
+          <div class="col-sm-3"> {{ form.age(class_="input form-control", placeholder="Age") }}</div>
+          <!-- WARNING MESSAGE -->
+          {% for message in form.age.errors %}
+          <div>
+            <p>
+              <font color="red">{{ message }}</font>
+            </p>
+          </div>
+          {% endfor %}
+        </div>
+        <!-- SUBMIT BUTTON -->
+        <div class="control-group">
+          <div class="controls">
+            <button type="submit" class="btn" id="save_add">{% if submit_text%}{{ submit_text }}{% else %}Add{% endif %}</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+
+{% endblock %}

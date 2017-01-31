@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div id="add_search" class="col-xs-offset-2">
+  <div class="row">
+    <!-- SEARCH CUSTOMERS BY NAME/MAIL -->
+    <form action="/search_name" class="form-search span12" style="display:inline;">
+      <input type="text" class="input-sm search-query " name="q" value="{% if q %}{{ q }}{% endif %}" placeholder="Search by name" autofocus>
+      <button type="submit" class="btn">Go</button>
+    </form>
+    <!-- SEARCH CUSTOMERS BY ID -->
+    <form action="/search_id" class="form-search span12" style="display:inline;">
+      <input type="text" class="input-sm search-query " name="idq" value="{% if idq %}{{ idq }}{% endif %}" placeholder="Search by id">
+      <button type="submit" class="btn">Go</button>
+    </form>
+    <!-- SEARCH CUSTOMERS BY AGE -->
+    <form action="/search" class="form-search span12" style="display:inline;">
+      <input type="text" class="input-sm search-query " name="param" value="{% if param %}{{ param }}{% endif %}" placeholder="Older than">
+      <button type="submit" class="btn">Go</button>
+    </form>
+  </div>
+</div>
+
+<div>
+  <!-- MESSAGE -->
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  <div class="alert alert-success">
+    <span class="closebtn">&times;</span>
+    <strong>Success!</strong>
+    {% for message in messages %}
+    {{ message }}
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% endwith %}
+
+  <!-- SEARCH RESULTS -->
+  <div ="search_cust">
+    <div class="container-fluid" style="margin-top:30px">
+      <div class="row-fluid">
+        <div>
+          {% if customers|list|length %}
+          <div>
+            <table class="table table-hover">
+              <tr>
+                <thead>
+                  <td><b>Id</b></td>
+                  <td><b>Name</b></td>
+                  <td><b>Surname</b></td>
+                  <td><b>Email</b></td>
+                  <td><b>Age</b></td>
+                  <td></td>
+                </thead>
+                <div>
+                  {% for customer in customers %}
+                  {% include 'customer_row.html' %}
+                  {% endfor %}
+                </div>
+              </tr>
+            </table>
+          </div>
+          {% else %}
+          <h3>No such customer</h3>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

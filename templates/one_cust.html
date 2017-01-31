@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="col-xs-offset-2" style="margin-top: 30px;">
+  <div class="col-xs-offset-2 col-xs-4">
+    <!-- DATA FOR ONE CUSTOMER -->
+    {% if cust %}
+    <table class="table table-hover">
+      <tr>
+        <th><b>Id</b></th>
+        <td>{{ cust.c_id}}</td>
+      </tr>
+      <tr>
+        <th><b>First name</b></th>
+        <td>{{ cust.first_name}}</td>
+      </tr>
+      <tr>
+        <th><b>Last name</b></th>
+        <td>{{ cust.last_name }}</td>
+      </tr>
+      <tr>
+        <th><b>Email</b></th>
+        <td>{{ cust.email}}</td>
+      </tr>
+      <tr>
+        <th><b>Age</b></th>
+        <td>{{ cust.age}}</td>
+      </tr>
+      {% endif %}
+    </table>
+  </div>
+</div>
+
+{% endblock %}

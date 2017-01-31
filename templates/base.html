@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Customers exercise</title>
+
+  <!-- SCRIPTS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script type="text/javascript" src="/static/js/jquery-1.9.0.js"></script>
+  <script type="text/javascript" src="/static/js/jquery-3.1.1.js"></script>
+  <script type="text/javascript" src="/static/js/script.js"></script>
+  <script type="text/javascript" src="/static/js/skripta.js"></script>
+  <script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript">var $SCRIPT_ROOT = {{ request.script_root | tojson | safe }};</script>
+  <link href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
+  <link href="{{ url_for('static', filename='font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet" media="screen">
+</head>
+
+<body>
+  <!-- START OF THE DOCUMENT -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-offset-1 col-xs-10">
+        <header>
+          <h3>  CUSTOMERS</h3>
+        </header>
+        <nav>
+          <div class="col-xs-offset-3">
+            <span><a class="btn btn-lg btn-default glyphicon glyphicon-home" style="border:none" href="/" role="button"> Home</a></span>
+            <span><a class="btn btn-lg btn-default glyphicon glyphicon-plus" style="border:none" href="/add" role="button"> Add new</a></span>
+            <span><a class="btn btn-lg btn-default glyphicon glyphicon-th-list" style="border:none" href="/customers" role="button"> Show all</a></span>
+          </div>
+        </nav>
+
+        <div>
+          <!-- CONTENT OF THE PAGE -->
+          {% block content %}
+
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</body>
+</html>

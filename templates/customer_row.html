@@ -1,0 +1,26 @@
+<!-- ROW FOR ONE CUSTOMER -->
+<tbody>
+  <div id="custRow">
+    <td>
+      {{ customer.c_id }}
+    </td>
+    <td>
+      {{ customer.first_name }}
+    </td>
+    <td>
+      {{ customer.last_name }}
+    </td>
+    <td>
+      {{ customer.email }}
+    </td>
+    <td>
+      {{ customer.age }}
+    </td>
+    <td>
+      <!-- BUTTONS FOR SHOW, EDIT & DELETE -->
+      <a href="/customers/{{ customer.c_id }}" class="btn btn-info btn-xs" >SHOW</a>
+      <a href="/customers/{{ customer.c_id }}/edit" class="btn btn-warning btn-xs">EDIT</a>
+      <a href="/customers/{{ customer.c_id }}/delete" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure you want to delete customer {{ customer.first_name }} {{ customer.last_name }} ?');" name="delButton">DELETE</a>
+    </td>
+  </div>
+</tbody>
